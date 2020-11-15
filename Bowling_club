@@ -1,0 +1,131 @@
+from abc import ABC, abstractmethod
+
+class Club(ABC):
+    name=""
+    def init(self, name):
+        self.name=name
+    def get_name(self):
+        self.getname()
+#interface
+class Nameclass(ABC):
+    def get_name(self):
+        pass
+
+
+
+#абстрактний клас
+class player(ABC):
+    def init(self,throw_ball):
+        self.throw_ball=False
+    def throw_the_ball(self):
+        self.throw_ball()
+
+class player_threw(throw, player):
+    def throw_ball(self):
+        if throw==True:
+            print("Player threw the ball")
+        else:
+            print("Throw the ball")
+
+#інтерфейс
+class throw(ABC):
+    @abstractmethod
+    def throw_ball():
+        pass
+
+
+
+
+
+class Stuff(ABC):
+    def __init__(self, name, age, work_time, tel_number):
+        super().__init__()
+
+    @abstractmethod
+    def get_name(self):
+        pass
+
+    @abstractmethod
+    def get_age(self):
+        pass
+
+    @abstractmethod
+    def get_work_time(self):
+        pass
+
+    @abstractmethod
+    def get_tel_number(self):
+        pass
+
+class Waiter(Stuff):
+    name = ''
+    age = 0
+    work_time = 0
+    tel_number = ''
+
+    def __init__(self, name, age, work_time, tel_number):
+        self.name = name
+        self.age = age
+        self.work_time = work_time
+        self.tel_number = tel_number
+
+    def get_name(self):
+        return self.name
+
+    def get_age(self):
+        return self.age
+
+    def get_work_time(self):
+        return self.work_time
+
+    def get_tel_number(self):
+        return self.tel_number
+
+
+class Barman(Stuff):
+    name = ""
+    age = 0
+    work_time = 0
+    tel_number = ""
+
+    def __init__(self, name, age, work_time, tel_number):
+        self.name = name
+        self.age = age
+        self.work_time = work_time
+        self.tel_number = tel_number
+
+    def get_name(self):
+        return self.name
+
+    def get_age(self):
+        return self.age
+
+    def get_work_time(self):
+        return self.work_time
+
+    def get_tnum(self):
+        return self.tel_number
+
+
+class Admin(Stuff):
+
+
+    def __init__(self, name, age, work_time, tel_number):
+        self.name = name
+        self.age = age
+        self.work_time = work_time
+        self.tel_number = tel_number
+        print("Адміністратор створений")
+
+    def get_name(self):
+        print(self.name.title() + "Ім'я адміністратора")
+
+    def get_age(self):
+        print(self.age.title() + "Вік адміністратора")
+
+    def get_work_time(self):
+        print(self.work_time.title() + "Час роботи адміністратора")
+
+
+    def get_tel_number(self):
+        print(self.tel_number.title() + "Номер адміністратора")
