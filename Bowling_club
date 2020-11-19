@@ -1,4 +1,25 @@
 from abc import ABC, abstractmethod
+import re
+
+
+def do_input_int(message):
+    flag = True
+    while flag:
+        value = input(message)
+        if bool(re.match('^[0-9]{1,}$', value)):
+            flag = False
+            value = int(value)
+        else:
+            print('error')
+    return value
+
+class StuffException(Exception):
+    def __init__(self, msg, name):
+        self.name = name
+
+        super().__init__(msg)
+
+
 
 class Club(ABC):
     name=""
@@ -20,12 +41,7 @@ class player(ABC):
     def throw_the_ball(self):
         self.throw_ball()
 
-class player_threw(throw, player):
-    def throw_ball(self):
-        if throw==True:
-            print("Player threw the ball")
-        else:
-            print("Throw the ball")
+
 
 #інтерфейс
 class throw(ABC):
@@ -58,10 +74,28 @@ class Stuff(ABC):
         pass
 
 class Waiter(Stuff):
-    name = ''
-    age = 0
-    work_time = 0
-    tel_number = ''
+    while True:
+        try:
+            name = input("vvedit imia")
+            if bool(re.match('^[A-Z][a-z]{1,}$', name)):
+                break
+            else:
+                raise StuffException("ne pravil'no vvedeno imia",name)
+        except StuffException as e:
+            print(f'Name exeption:\n {e}:{e.name}')
+
+    age = do_input_int("vvedit' vozrast")
+    work_time = do_input_int("vvedit' rabochie vremia")
+    try:
+        tel_number = do_input_int("Введіть номер телефона")
+        if tel_number < 999999999999:
+            pass
+        else:
+            raise Exception("Кількість цифр у номері телефона більша за можливу. Перевірте введений вами номер")
+
+
+    except Exception as e:
+        print(e)
 
     def __init__(self, name, age, work_time, tel_number):
         self.name = name
@@ -83,10 +117,28 @@ class Waiter(Stuff):
 
 
 class Barman(Stuff):
-    name = ""
-    age = 0
-    work_time = 0
-    tel_number = ""
+    while True:
+        try:
+            name = input("vvedit imia")
+            if bool(re.match('^[A-Z][a-z]{1,}$', name)):
+                break
+            else:
+                raise StuffException("ne pravil'no vvedeno imia",name)
+        except StuffException as e:
+            print(f'Name exeption:\n {e}:{e.name}')
+
+    age = do_input_int("vvedit' vozrast")
+    work_time = do_input_int("vvedit' rabochie vremia")
+    try:
+        tel_number = do_input_int("Введіть номер телефона")
+        if tel_number < 999999999999:
+            pass
+        else:
+            raise Exception("Кількість цифр у номері телефона більша за можливу. Перевірте введений вами номер")
+
+
+    except Exception as e:
+        print(e)
 
     def __init__(self, name, age, work_time, tel_number):
         self.name = name
@@ -103,12 +155,32 @@ class Barman(Stuff):
     def get_work_time(self):
         return self.work_time
 
-    def get_tnum(self):
+    def get_tel_number(self):
         return self.tel_number
 
-
 class Admin(Stuff):
+    while True:
+        try:
+            name = input("vvedit imia")
+            if bool(re.match('^[A-Z][a-z]{1,}$', name)):
+                break
+            else:
+                raise StuffException("ne pravil'no vvedeno imia",name)
+        except StuffException as e:
+            print(f'Name exeption:\n {e}:{e.name}')
 
+    age = do_input_int("vvedit' vozrast")
+    work_time = do_input_int("vvedit' rabochie vremia")
+    try:
+        tel_number = do_input_int("Введіть номер телефона")
+        if tel_number < 999999999999:
+            pass
+        else:
+            raise Exception("Кількість цифр у номері телефона більша за можливу. Перевірте введений вами номер")
+
+
+    except Exception as e:
+        print(e)
 
     def __init__(self, name, age, work_time, tel_number):
         self.name = name
